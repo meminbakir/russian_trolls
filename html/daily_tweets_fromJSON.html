@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">  
+  <head>
+      <meta charset="utf-8">
+      <title>Daily tweets in different languages</title>
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css" type="text/css" />
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"> </script>
+        <script  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <div id='daily_tweets' />
+
+
+
+      
+
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                   $.getJSON("./daily_tweets.json", function(json) {
+                   Bokeh.embed.embed_item(json, "daily_tweets");
+                });
+                
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    </body>
